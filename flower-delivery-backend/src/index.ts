@@ -4,9 +4,19 @@ import { PrismaClient } from "@prisma/client";
 
 const app = express();
 const prisma = new PrismaClient();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'https://foxyulya.github.io',
+    'http://localhost:3000', 
+    'http://127.0.0.1:3000'
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions)); 
 app.use(express.json());
 
 app.get("/api/shops", async (req, res) => {
@@ -233,9 +243,13 @@ app.get("/api/orders/:id", async (req, res) => {
 });
 
 app.get("/api/test", (req, res) => {
-  res.json({ message: "Server is alive! Database is connected!" });
+  res.json({ 
+    message: "Server is alive! Database is connected!",
+    timestamp: new Date().toISOString(),
+    cors: "enabled for GitHub Pages"
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
