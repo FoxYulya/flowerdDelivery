@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import type { OrderDetails } from "../types";
 
-const API_BASE_URL = "https://flowerddelivery-4.onrender.com/api";
+const API_BASE_URL = "https://flowerddelivery-6.onrender.com/api";
 
 const OrdersDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
