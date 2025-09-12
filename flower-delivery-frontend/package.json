@@ -1,34 +1,38 @@
 {
-  "name": "flower-delivery-frontend",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@react-google-maps/api": "^2.20.7",
-    "axios": "^1.11.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-google-recaptcha": "^3.1.0",
-    "react-router-dom": "^7.8.2"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/google.maps": "^3.58.1",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
-  }
+   "name": "flower-delivery-frontend",
+   "private": true,
+   "version": "0.0.0",
+   "type": "module",
+   "homepage": "https://FoxYulya.github.io/flowerdDelivery",
+   "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "lint": "eslint .",
+      "preview": "vite preview",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d dist"
+   },
+   "dependencies": {
+      "@react-google-maps/api": "^2.20.7",
+      "axios": "^1.11.0",
+      "react": "^19.1.1",
+      "react-dom": "^19.1.1",
+      "react-google-recaptcha": "^3.1.0",
+      "react-router-dom": "^7.8.2"
+   },
+   "devDependencies": {
+      "@eslint/js": "^9.33.0",
+      "@types/google.maps": "^3.58.1",
+      "@types/react": "^19.1.12",
+      "@types/react-dom": "^19.1.9",
+      "@vitejs/plugin-react": "^5.0.0",
+      "eslint": "^9.33.0",
+      "eslint-plugin-react-hooks": "^5.2.0",
+      "eslint-plugin-react-refresh": "^0.4.20",
+      "gh-pages": "^6.3.0",
+      "globals": "^16.3.0",
+      "typescript": "~5.8.3",
+      "typescript-eslint": "^8.39.1",
+      "vite": "^7.1.2"
+   }
 }
