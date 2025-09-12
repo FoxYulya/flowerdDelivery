@@ -4,7 +4,7 @@ import axios from "axios";
 import type { Shop } from "../types";
 import { useAnchorScroll } from "../hooks/useAnchorScroll";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://flowerddelivery-4.onrender.com/api";
 
 const flowerImages = ["/images/1.JPG", "/images/2.JPG", "/images/3.JPG"];
 
