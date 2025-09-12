@@ -216,6 +216,8 @@ const Cart: React.FC = () => {
     email: "",
     phone: "",
     address: "",
+    items: [],
+    shopId: 0,
   });
   const [addressCoordinates, setAddressCoordinates] = useState<{
     lat: number;

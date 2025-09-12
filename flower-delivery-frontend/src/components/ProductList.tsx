@@ -23,7 +23,7 @@ const ProductList: React.FC = () => {
   const [currentSort, setCurrentSort] = useState<SortOption | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
+  const [, setTotalCount] = useState(0);
   const [itemsPerPage] = useState(6);
   const { addToCart } = useCart();
 

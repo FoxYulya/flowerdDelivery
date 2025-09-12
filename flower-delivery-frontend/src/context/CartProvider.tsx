@@ -105,6 +105,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const applyCoupon = (code: string) => {
     const coupons: Coupon[] = [
       {
+        id: 1,
         code: "WELCOME10",
         discount: 10,
         description: "Знижка 10% для нових користувачів",
@@ -112,6 +113,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         isActive: true,
       },
       {
+        id: 2,
         code: "FREESHIP",
         discount: 5,
         description: "5% знижки на доставку",

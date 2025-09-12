@@ -23,7 +23,7 @@ export interface CartItem {
 export interface Coupon {
   id: number;
   code: string;
-  discount: number;
+  discount: number; 
   description: string;
   expiresAt?: string;
   minOrderAmount?: number;
@@ -40,11 +40,12 @@ export interface OrderData {
     price: number;
     quantity: number;
   }>;
-  appliedCoupon?: Coupon | null;
-  discountAmount?: number;
-  totalAfterDiscount?: number;
+  appliedCoupon?: Coupon | null; 
+  discountAmount?: number; 
+  totalAfterDiscount?: number; 
   createdAt?: string;
   shopId: number;
+  couponCode?: string | null;
 }
 
 export interface Order {
@@ -79,8 +80,8 @@ export interface CartContextType {
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
-  applyCoupon: (code: string) => void;
-  removeCoupon: () => void;
-  appliedCoupon: Coupon | null;
+  applyCoupon: (code: string) => void; 
+  removeCoupon: () => void; 
+  appliedCoupon: Coupon | null; 
   discountedTotalPrice: () => number;
 }

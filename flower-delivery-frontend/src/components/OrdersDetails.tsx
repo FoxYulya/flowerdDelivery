@@ -5,7 +5,7 @@ import type { OrderDetails } from "../types";
 
 const API_BASE_URL = "http://localhost:5000/api";
 
-const OrderDetails: React.FC = () => {
+const OrdersDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [order, setOrder] = useState<OrderDetails | null>(null);
   const [loading, setLoading] = useState(true);
@@ -158,4 +158,4 @@ const OrderDetails: React.FC = () => {
   );
 };
 
-export default OrderDetails;
+export default OrdersDetails;

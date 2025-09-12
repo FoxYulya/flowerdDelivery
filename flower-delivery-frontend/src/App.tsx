@@ -1,11 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import ShopList from './components/ShopList';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import { CartProvider } from './context/CartProvider'; 
-import OrderDetails from './components/OrderDetails';
+import OrderDetails from './components/OrdersDetails';
 import Coupons from './components/Coupons';
 import MyOrders from './components/MyOrders';
 
