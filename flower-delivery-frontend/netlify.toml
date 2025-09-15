@@ -1,3 +1,3 @@
-[build]
+ base = "flower-delivery-frontend"
   command = "npm run build"
-  publish = "dist"
+  publish = "flower-delivery-frontend/dist"
