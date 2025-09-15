@@ -11,7 +11,7 @@
     "start": "node dist/index.js",
     "seed": "ts-node prisma/seed.ts",
     "postinstall": "prisma generate",
-    "deploy": "npm run build && npm start"
+    "deploy": "npm ci && prisma generate && tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",
