@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 
@@ -37,7 +37,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 // Health check endpoint (должен быть первым)
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.json({ 
     message: "Flower delivery API is running!",
     status: "healthy",
@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/api/test", (req, res) => {
+app.get("/api/test", (req: Request, res: Response) => {
   res.json({ 
     message: "Server is alive! Database is connected!",
     timestamp: new Date().toISOString(),
@@ -55,7 +55,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // Middleware для обработки ошибок Prisma
-const handlePrismaError = (error: any, res: any) => {
+const handlePrismaError = (error: any, res: Response) => {
   console.error("Prisma error:", error);
   
   if (error.code === 'P2002') {
@@ -74,7 +74,7 @@ const handlePrismaError = (error: any, res: any) => {
   });
 };
 
-app.get("/api/shops", async (req, res) => {
+app.get("/api/shops", async (req: Request, res: Response) => {
   try {
     const shops = await prisma.shop.findMany();
     res.json(shops);
@@ -84,7 +84,7 @@ app.get("/api/shops", async (req, res) => {
   }
 });
 
-app.get("/api/shops/:id/products", async (req, res) => {
+app.get("/api/shops/:id/products", async (req: Request, res: Response) => {
   try {
     const shopId = parseInt(req.params.id);
     
@@ -118,7 +118,7 @@ app.get("/api/shops/:id/products", async (req, res) => {
   }
 });
 
-app.patch("/api/products/:id/favorite", async (req, res) => {
+app.patch("/api/products/:id/favorite", async (req: Request, res: Response) => {
   try {
     const productId = parseInt(req.params.id);
     
@@ -144,7 +144,7 @@ app.patch("/api/products/:id/favorite", async (req, res) => {
   }
 });
 
-app.get("/api/shops/:id/products/paginated", async (req, res) => {
+app.get("/api/shops/:id/products/paginated", async (req: Request, res: Response) => {
   try {
     const shopId = parseInt(req.params.id);
     
@@ -185,7 +185,7 @@ app.get("/api/shops/:id/products/paginated", async (req, res) => {
   }
 });
 
-app.get("/api/coupons", async (req, res) => {
+app.get("/api/coupons", async (req: Request, res: Response) => {
   try {
     const coupons = await prisma.coupon.findMany({
       where: { isActive: true },
@@ -197,7 +197,7 @@ app.get("/api/coupons", async (req, res) => {
   }
 });
 
-app.get("/api/coupons/validate/:code", async (req, res) => {
+app.get("/api/coupons/validate/:code", async (req: Request, res: Response) => {
   try {
     const { code } = req.params;
     
@@ -224,7 +224,7 @@ app.get("/api/coupons/validate/:code", async (req, res) => {
   }
 });
 
-app.post("/api/orders", async (req, res) => {
+app.post("/api/orders", async (req: Request, res: Response) => {
   try {
     const { email, phone, address, items, shopId, couponCode } = req.body;
 
@@ -278,7 +278,7 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
-app.get("/api/orders/search", async (req, res) => {
+app.get("/api/orders/search", async (req: Request, res: Response) => {
   try {
     const { email, phone, orderId } = req.query;
 
@@ -322,7 +322,7 @@ app.get("/api/orders/search", async (req, res) => {
   }
 });
 
-app.get("/api/orders/:id", async (req, res) => {
+app.get("/api/orders/:id", async (req: Request, res: Response) => {
   try {
     const orderId = parseInt(req.params.id);
     
@@ -347,7 +347,7 @@ app.get("/api/orders/:id", async (req, res) => {
 });
 
 // Global error handler
-app.use((error: any, req: any, res: any, next: any) => {
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
   console.error("Unhandled error:", error);
   res.status(500).json({ 
     error: "Internal server error",
@@ -356,7 +356,7 @@ app.use((error: any, req: any, res: any, next: any) => {
 });
 
 // 404 handler
-app.use((req, res) => {
+app.use((req: Request, res: Response) => {
   res.status(404).json({ 
     error: "Route not found",
     path: req.path,
