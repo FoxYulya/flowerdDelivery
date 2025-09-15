@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import type { Shop } from "../types";
-import { useAnchorScroll } from "../hooks/useAnchorScroll";
 
-const API_BASE_URL = "https://flowerddelivery-7.onrender.com/api";
+const API_BASE_URL = "https://flowerddelivery-1.onrender.com";
 
 const flowerImages = ["/images/1.JPG", "/images/2.JPG", "/images/3.JPG"];
 
@@ -12,8 +11,6 @@ const ShopList: React.FC = () => {
   const [shops, setShops] = useState<Shop[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  useAnchorScroll();
 
   useEffect(() => {
     const fetchShops = async () => {
@@ -31,17 +28,12 @@ const ShopList: React.FC = () => {
     fetchShops();
   }, []);
 
+  // Убираем хэш из URL при монтировании компонента
   useEffect(() => {
-    if (window.location.hash === "#shops-section") {
-      setTimeout(() => {
-        const shopsSection = document.getElementById("shops-section");
-        if (shopsSection) {
-          shopsSection.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 300);
+    // Если в URL есть хэш, удаляем его
+    if (window.location.hash) {
+      // Используем history.replaceState чтобы удалить хэш без перезагрузки
+      window.history.replaceState(null, '', window.location.pathname);
     }
   }, []);
 

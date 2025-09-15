@@ -6,7 +6,7 @@ import type { OrderData } from "../types/index";
 import { useNavigate } from "react-router-dom";
 import GoogleMapComponent from "./GoogleMapComponent";
 
-const API_BASE_URL = "https://flowerddelivery-7.onrender.com/api";
+const API_BASE_URL = "https://flowerddelivery-1.onrender.com/";
 
 const SHOP_LOCATIONS = {
   1: {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import type { Coupon } from "../types";
 
-const API_BASE_URL = "https://flowerddelivery-7.onrender.com/api";
+const API_BASE_URL = "https://flowerddelivery-1.onrender.com/";
 
 const Toast: React.FC<{ message: string; onClose: () => void }> = ({
   message,
