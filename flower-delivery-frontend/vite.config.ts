@@ -1,7 +1,11 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/flowerdDelivery/', // обязательно с косой чертой в конце
   plugins: [react()],
-});
+  base: '/flowerdDelivery/', // Важно: название вашего репозитория
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets'
+  }
+})
