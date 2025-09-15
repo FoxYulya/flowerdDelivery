@@ -4,7 +4,7 @@ import axios from "axios";
 import type { Product } from "../types";
 import { useCart } from "../hooks/useCart";
 
-const API_BASE_URL = "https://flowerddelivery-1.onrender.com";
+const API_BASE_URL = "https://flowerddelivery-1.onrender.com/api";
 
 type SortOption = "price_asc" | "price_desc" | "date_desc" | "date_asc";
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import type { Shop } from "../types";
 
-const API_BASE_URL = "https://flowerddelivery-1.onrender.com";
+const API_BASE_URL = "https://flowerddelivery-1.onrender.com/api";
 
 const flowerImages = ["/images/1.JPG", "/images/2.JPG", "/images/3.JPG"];
 
