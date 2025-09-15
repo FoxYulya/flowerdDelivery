@@ -24,10 +24,13 @@ async function connectDatabase() {
 const corsOptions = {
     origin: [
         'https://foxyulya.github.io',
+        'https://calm-gelato-cadf13.netlify.app',
         'http://localhost:3000',
         'http://127.0.0.1:3000'
     ],
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
     optionsSuccessStatus: 200
 };
 app.use((0, cors_1.default)(corsOptions));
@@ -44,7 +47,7 @@ app.get("/api/test", (req, res) => {
     res.json({
         message: "Server is alive! Database is connected!",
         timestamp: new Date().toISOString(),
-        cors: "enabled for GitHub Pages",
+        cors: "enabled for GitHub Pages and Netlify",
         environment: process.env.NODE_ENV || "development"
     });
 });
@@ -163,13 +166,15 @@ app.get("/api/shops/:id/products/paginated", async (req, res) => {
 });
 app.get("/api/coupons", async (req, res) => {
     try {
+        console.log("📊 Fetching coupons...");
         const coupons = await prisma.coupon.findMany({
             where: { isActive: true },
         });
+        console.log(`✅ Found ${coupons.length} active coupons`);
         res.json(coupons);
     }
     catch (error) {
-        console.error("Error fetching coupons:", error);
+        console.error("❌ Error fetching coupons:", error);
         return handlePrismaError(error, res);
     }
 });

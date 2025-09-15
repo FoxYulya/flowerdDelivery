@@ -21,13 +21,17 @@ async function connectDatabase() {
   }
 }
 
+// Обновленные CORS настройки с добавлением вашего Netlify домена
 const corsOptions = {
   origin: [
     'https://foxyulya.github.io',
+    'https://calm-gelato-cadf13.netlify.app', // Добавлен ваш Netlify домен
     'http://localhost:3000', 
     'http://127.0.0.1:3000'
   ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   optionsSuccessStatus: 200
 };
 
@@ -49,7 +53,7 @@ app.get("/api/test", (req: Request, res: Response) => {
   res.json({ 
     message: "Server is alive! Database is connected!",
     timestamp: new Date().toISOString(),
-    cors: "enabled for GitHub Pages",
+    cors: "enabled for GitHub Pages and Netlify",
     environment: process.env.NODE_ENV || "development"
   });
 });
@@ -187,12 +191,14 @@ app.get("/api/shops/:id/products/paginated", async (req: Request, res: Response)
 
 app.get("/api/coupons", async (req: Request, res: Response) => {
   try {
+    console.log("📊 Fetching coupons...");
     const coupons = await prisma.coupon.findMany({
       where: { isActive: true },
     });
+    console.log(`✅ Found ${coupons.length} active coupons`);
     res.json(coupons);
   } catch (error) {
-    console.error("Error fetching coupons:", error);
+    console.error("❌ Error fetching coupons:", error);
     return handlePrismaError(error, res);
   }
 });
