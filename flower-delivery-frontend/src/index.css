@@ -2255,3 +2255,182 @@ body {
   border: 2px solid #27ae60 !important;
   background: rgba(39, 174, 96, 0.05) !important;
 }
+
+
+/* Добавьте эти стили к существующему CSS */
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+
+.mobile-nav-overlay.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    rgba(26, 26, 26, 0.98) 0%, 
+    rgba(40, 20, 45, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.mobile-nav-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.mobile-nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(219, 112, 147, 0.3);
+  transform: translateX(5px);
+}
+
+.mobile-nav-link.cart-link {
+  background: linear-gradient(135deg, #db7093, #dda0dd) !important;
+  color: white !important;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-link.cart-link:hover {
+  transform: translateX(0) scale(1.02);
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .header .container {
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .mobile-nav {
+    width: 280px;
+  }
+  
+  .mobile-nav-header {
+    padding: 0 1.5rem;
+  }
+  
+  .mobile-nav-links {
+    padding: 0 1.5rem;
+  }
+}
