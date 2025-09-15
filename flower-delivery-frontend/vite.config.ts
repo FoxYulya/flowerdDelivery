@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/flowerdDelivery/', // Важно: название вашего репозитория
+  base: '/', // Для Netlify используйте корневой путь
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
