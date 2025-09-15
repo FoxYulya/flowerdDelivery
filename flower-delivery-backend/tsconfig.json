@@ -3,9 +3,10 @@
     "target": "es2020",
     "module": "commonjs",
     "lib": ["es2020"],
+    "types": ["node"],
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
@@ -13,8 +14,14 @@
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "declaration": false,
+    "declarationMap": false,
     "sourceMap": false,
-    "removeComments": true
+    "removeComments": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": [
     "src/**/*"
